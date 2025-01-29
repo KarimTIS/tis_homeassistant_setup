@@ -105,8 +105,8 @@ cd "$ADDON_REPO_NAME" || exit
 7z x laravel_2.zip.001
 check_error "Failed to extract laravel_2.zip.001."
 
+echo "Deleting laravel_2.zip.* files..."
+rm laravel_2.zip.*
 echo "Installation of integration and addon completed successfully!"
-
 echo "restarting Home Assistant!"
-
 ha core restart
