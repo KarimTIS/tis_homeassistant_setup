@@ -106,7 +106,7 @@ fi
 
 # Extract the multipart archive
 echo "Extracting laravel_2.zip.001..."
-7z x laravel_2.zip.001
+7z x -y laravel_2.zip.001
 check_error "Failed to extract laravel_2.zip.001."
 
 echo "Deleting laravel_2.zip.* files..."
