@@ -1,5 +1,4 @@
 #!/bin/sh
-set -x
 
 # Define variables
 HOMEASSISTANT_CONFIG="/config"
@@ -95,6 +94,7 @@ if [ ! -d "$ADDON_REPO_NAME" ]; then
     echo "Cloning the addon repository..."
     git clone --depth 1 "$ADDON_REPO_URL" "$ADDON_REPO_NAME"
     check_error "Failed to clone the addon repository."
+    cd "$ADDON_REPO_NAME" || exit
 else
     echo "Addon repository already exists. Resetting to the latest commit..."
     cd "$ADDON_REPO_NAME" || exit
@@ -106,8 +106,6 @@ fi
 
 # Extract the multipart archive
 echo "Extracting laravel_2.zip.001..."
-echo "Current Directory: $(pwd)"
-cd "$ADDON_REPO_NAME" || exit
 7z x laravel_2.zip.001
 check_error "Failed to extract laravel_2.zip.001."
 
