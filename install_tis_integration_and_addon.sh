@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x
 
 # Define variables
 HOMEASSISTANT_CONFIG="/config"
