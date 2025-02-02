@@ -106,6 +106,7 @@ fi
 
 # Extract the multipart archive
 echo "Extracting laravel_2.zip.001..."
+echo "Current Directory: $(pwd)"
 cd "$ADDON_REPO_NAME" || exit
 7z x laravel_2.zip.001
 check_error "Failed to extract laravel_2.zip.001."
