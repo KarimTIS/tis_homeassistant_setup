@@ -69,8 +69,10 @@ if [ ! -d "$INTEGRATION_REPO_NAME" ]; then
     git clone --depth 1 "$INTEGRATION_REPO_URL"
     check_error "Failed to clone the integration repository."
 else
-    echo "Integration repository already exists. Pulling the latest changes..."
+    echo "Integration repository already exists. Resetting to the latest commit..."
     cd "$INTEGRATION_REPO_NAME" || exit
+    git reset --hard
+    check_error "Failed to reset the integration repository."
     git pull
     check_error "Failed to update the integration repository."
 fi
@@ -93,8 +95,10 @@ if [ ! -d "$ADDON_REPO_NAME" ]; then
     git clone --depth 1 "$ADDON_REPO_URL" "$ADDON_REPO_NAME"
     check_error "Failed to clone the addon repository."
 else
-    echo "Addon repository already exists. Pulling the latest changes..."
+    echo "Addon repository already exists. Resetting to the latest commit..."
     cd "$ADDON_REPO_NAME" || exit
+    git reset --hard
+    check_error "Failed to reset the addon repository."
     git pull
     check_error "Failed to update the addon repository."
 fi
@@ -109,4 +113,3 @@ echo "Deleting laravel_2.zip.* files..."
 rm laravel_2.zip.*
 echo "Installation of integration and addon completed successfully!"
 echo "restarting Home Assistant!"
-ha core restart
